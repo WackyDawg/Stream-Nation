@@ -260,38 +260,56 @@ $(document).ready(function () {
     
 
     function toggleFullScreen() {
-        videos.forEach(video => {
-            if (!document.fullscreenElement) {
-                // Entering fullscreen
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                } else if (video.mozRequestFullScreen) {
-                    video.mozRequestFullScreen();
-                } else if (video.webkitRequestFullscreen) {
-                    video.webkitRequestFullscreen();
-                } else if (video.msRequestFullscreen) {
-                    video.msRequestFullscreen();
-                }
+      videos.forEach(video => {
+          const vidContainer = document.getElementById("video-control-section");
+          const videoControls = document.getElementById("video-controls");
+  
+          if (!document.fullscreenElement) {
+              // Entering fullscreen
+              if (vidContainer.requestFullscreen) {
+                  vidContainer.requestFullscreen();
+              } else if (vidContainer.mozRequestFullScreen) {
+                  vidContainer.mozRequestFullScreen();
+              } else if (vidContainer.webkitRequestFullscreen) {
+                  vidContainer.webkitRequestFullscreen();
+              } else if (vidContainer.msRequestFullscreen) {
+                  vidContainer.msRequestFullscreen();
+              }
+  
+              // Hide the default controls in fullscreen
+              video.controls = false;
+              hideControlsAfterDelay(videoControls);
+          } else {
+              // Exiting fullscreen
+              if (document.exitFullscreen) {
+                  document.exitFullscreen();
+              } else if (document.mozCancelFullScreen) {
+                  document.mozCancelFullScreen();
+              } else if (document.webkitExitFullscreen) {
+                  document.webkitExitFullscreen();
+              } else if (document.msExitFullscreen) {
+                  document.msExitFullscreen();
+              }
+  
+              // Restore the default controls when exiting fullscreen
+              video.controls = true;
+              videoControls.style.display = "block"; // Ensure controls are visible when exiting fullscreen
+          }
+      });
+  }
 
-                // Hide the default controls in fullscreen
-                video.controls = false;
-            } else {
-                // Exiting fullscreen
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
+  function hideControlsAfterDelay(videoControls) {
+    let timer;
+    videoControls.style.display = "block"; // Ensure controls are visible initially
 
-                // Restore the default controls when exiting fullscreen
-                video.controls = true;
-            }
-        });
-    }
+    document.addEventListener("mousemove", function() {
+        clearTimeout(timer);
+        videoControls.style.display = "block";
+        timer = setTimeout(function() {
+            videoControls.style.display = "none";
+        }, 6000); // Hide controls after 6 seconds of inactivity
+    });
+}
 });
   
   // Recently Watched Channels Slider
