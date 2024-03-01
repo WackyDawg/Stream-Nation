@@ -21225,3 +21225,17 @@ video::-webkit-media-controls-enclosure {
       margin: 0;
       padding: 10px;
     }
+.searchNoResult-0-2-333 {
+  flex: 1;
+  color: #A8A8A8;
+  display: flex;
+  padding: 0 50px;
+  font-size: 18px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 600px) {
+  .searchNoResult-0-2-333 {
+  }
+}
