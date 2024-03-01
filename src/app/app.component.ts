@@ -1,42 +1,22 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
+import { VideoComponent } from './components/video/video.component';
+import { MainComponent } from './components/main/main.component';
+import { MobileNavComponent } from './components/mobile-nav/mobile-nav.component';
+import { ChannelMetadataComponent } from './components/channel-metadata/channel-metadata.component';
+import { OverlayPlayerComponent } from './components/overlay-player/overlay-player.component';
+// import { VideoContainerComponent } from './components/video-container/video-container.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent,VideoComponent,MainComponent,MobileNavComponent,ChannelMetadataComponent,OverlayPlayerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'my-app';
   
-  @ViewChild('slider') slider!: ElementRef; // Note the '!' to indicate that it will be initialized later
-  slideWidth!: number; // Note the '!' to indicate that it will be initialized later
-  scrollPosition: number = 0;
-
-  ngAfterViewInit() {
-    this.slideWidth = this.slider.nativeElement.offsetWidth;
-  }
-
-  prev() {
-    if (this.scrollPosition > 0) {
-      this.scrollPosition -= this.slideWidth;
-      this.slider.nativeElement.scrollTo({
-        left: this.scrollPosition,
-        behavior: 'smooth'
-      });
-    }
-  }
-
-  next() {
-    if (this.scrollPosition < this.slider.nativeElement.scrollWidth - this.slider.nativeElement.clientWidth) {
-      this.scrollPosition += this.slideWidth;
-      this.slider.nativeElement.scrollTo({
-        left: this.scrollPosition,
-        behavior: 'smooth'
-      });
-    }
-  }
+ 
 }
