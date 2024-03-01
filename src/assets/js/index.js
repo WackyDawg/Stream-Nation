@@ -168,7 +168,7 @@ $(document).ready(function () {
   document.addEventListener('DOMContentLoaded', function () {
     const videos = document.querySelectorAll('#custom-video');
     const muteBtns = document.querySelectorAll('#mute-btn');
-    const volumeRange = document.getElementById('volume-range');
+    const volumeRange = document.getElementById('#volume-range');
     const fullScreenBtn = document.getElementById('full-screen-btn');
     const pipBtn = document.getElementById('pip-btn');
 
