@@ -73,6 +73,24 @@ $(document).ready(function () {
     $('#expand-docked').click(function () {
         reverseDock(); // Reverse the actions
     });
+
+    $('.searchField-0-2-193').on('input', function() {
+    var searchTerm = $(this).val().trim();
+    if (searchTerm !== '') {
+        $('.searchLabel-0-2-192').hide();
+        $('.popularNowRecommendationsContainer-0-2-225').hide();
+        //$('.searchPageContainer-0-2-190').removeClass('custom-scroll');
+        $('.searchNoResult-0-2-333').text('Loading...');
+        // Perform your loading logic here
+        // Once loading is done, you can show the searchNoResult div with the appropriate message
+    } else {
+        $('.searchLabel-0-2-192').show();
+        $('.popularNowRecommendationsContainer-0-2-225').show();
+        $('.searchNoResult-0-2-333').text('Please use the Search field to start the search');
+    }
+});
+
+    
     // Click event to close the login dialog
     $("#close-login-dialog").click(function () {
       $("#login-dialog").hide();
@@ -168,7 +186,7 @@ $(document).ready(function () {
   document.addEventListener('DOMContentLoaded', function () {
     const videos = document.querySelectorAll('#custom-video');
     const muteBtns = document.querySelectorAll('#mute-btn');
-    const volumeRange = document.getElementById('#volume-range');
+    const volumeRange = document.getElementById('volume-range');
     const fullScreenBtn = document.getElementById('full-screen-btn');
     const pipBtn = document.getElementById('pip-btn');
 
@@ -186,13 +204,13 @@ $(document).ready(function () {
     function initHls() {
         if (Hls.isSupported()) {
             hls = new Hls();
-            hls.loadSource('https://live-par-2-cdn-alt.livepush.io/live/bigbuckbunnyclip/index.m3u8');
+            hls.loadSource('https://live-par-2-cdn-alt.livepush.io/live/bigbuckbunnyclip/indexh.m3u8');
             videos.forEach(video => {
                 hls.attachMedia(video);
             });
         } else if (videos[0].canPlayType('application/vnd.apple.mpegurl')) {
             videos.forEach(video => {
-                video.src = 'https://live-par-2-cdn-alt.livepush.io/live/bigbuckbunnyclip/index.m3u8';
+                video.src = 'https://live-par-2-cdn-alt.livepush.io/live/bigbuckbunnyclip/indexh.m3u8';
             });
         }
     }
@@ -260,56 +278,63 @@ $(document).ready(function () {
     
 
     function toggleFullScreen() {
-      videos.forEach(video => {
-          const vidContainer = document.getElementById("video-control-section");
-          const videoControls = document.getElementById("video-controls");
-  
-          if (!document.fullscreenElement) {
-              // Entering fullscreen
-              if (vidContainer.requestFullscreen) {
-                  vidContainer.requestFullscreen();
-              } else if (vidContainer.mozRequestFullScreen) {
-                  vidContainer.mozRequestFullScreen();
-              } else if (vidContainer.webkitRequestFullscreen) {
-                  vidContainer.webkitRequestFullscreen();
-              } else if (vidContainer.msRequestFullscreen) {
-                  vidContainer.msRequestFullscreen();
-              }
-  
-              // Hide the default controls in fullscreen
-              video.controls = false;
-              hideControlsAfterDelay(videoControls);
-          } else {
-              // Exiting fullscreen
-              if (document.exitFullscreen) {
-                  document.exitFullscreen();
-              } else if (document.mozCancelFullScreen) {
-                  document.mozCancelFullScreen();
-              } else if (document.webkitExitFullscreen) {
-                  document.webkitExitFullscreen();
-              } else if (document.msExitFullscreen) {
-                  document.msExitFullscreen();
-              }
-  
-              // Restore the default controls when exiting fullscreen
-              video.controls = true;
-              videoControls.style.display = "block"; // Ensure controls are visible when exiting fullscreen
-          }
-      });
-  }
-
-  function hideControlsAfterDelay(videoControls) {
-    let timer;
-    videoControls.style.display = "block"; // Ensure controls are visible initially
-
-    document.addEventListener("mousemove", function() {
-        clearTimeout(timer);
-        videoControls.style.display = "block";
-        timer = setTimeout(function() {
-            videoControls.style.display = "none";
-        }, 6000); // Hide controls after 6 seconds of inactivity
+        videos.forEach(video => {
+            const vidContainer = document.getElementById("video-control-section");
+            const videoControls = document.getElementById("video-controls");
+    
+            if (!document.fullscreenElement) {
+                // Entering fullscreen
+                if (vidContainer.requestFullscreen) {
+                    vidContainer.requestFullscreen();
+                } else if (vidContainer.mozRequestFullScreen) {
+                    vidContainer.mozRequestFullScreen();
+                } else if (vidContainer.webkitRequestFullscreen) {
+                    vidContainer.webkitRequestFullscreen();
+                } else if (vidContainer.msRequestFullscreen) {
+                    vidContainer.msRequestFullscreen();
+                }
+    
+                // Hide the default controls in fullscreen
+                video.controls = false;
+                hideControlsAfterDelay(videoControls);
+            } else {
+                // Exiting fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+    
+                // Restore the default controls when exiting fullscreen
+                video.controls = true;
+                videoControls.style.display = "block"; // Ensure controls are visible when exiting fullscreen
+            }
+        });
+    }
+    
+    function hideControlsAfterDelay(videoControls) {
+        let timer;
+        videoControls.style.display = "block"; // Ensure controls are visible initially
+    
+        document.addEventListener("mousemove", function() {
+            clearTimeout(timer);
+            videoControls.style.display = "block";
+            timer = setTimeout(function() {
+                videoControls.style.display = "none";
+            }, 6000); // Hide controls after 6 seconds of inactivity
+        });
+    }
+    
+    // Call hideControlsAfterDelay function when the document is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        const videoControls = document.getElementById("video-controls");
+        hideControlsAfterDelay(videoControls);
     });
-}
+    
 });
   
   // Recently Watched Channels Slider
