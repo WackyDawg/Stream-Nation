@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './overlay-player.component.html',
-  styleUrl: './overlay-player.component.css'
+  styleUrls: ['./overlay-player.component.css', '../../../assets/css/themed.css', '../../../assets/css/unthemed.css']
 })
 export class OverlayPlayerComponent {
 

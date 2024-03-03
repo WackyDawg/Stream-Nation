@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './search-main.component.html',
-  styleUrl: './search-main.component.css'
+  styleUrls: ['./search-main.component.css', '../../../../assets/css/themed.css', '../../../../assets/css/unthemed.css']
 })
 export class SearchMainComponent {
 

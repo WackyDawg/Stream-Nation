@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './mobile-nav.component.html',
-  styleUrl: './mobile-nav.component.css'
+  styleUrls: ['./mobile-nav.component.css', '../../../assets/css/themed.css', '../../../assets/css/unthemed.css']
 })
 export class MobileNavComponent {
 

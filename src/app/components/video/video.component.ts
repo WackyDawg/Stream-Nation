@@ -7,7 +7,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './video.component.html',
-  styleUrl: './video.component.css'
+  styleUrls: ['./video.component.css', '../../../assets/css/themed.css', '../../../assets/css/unthemed.css']
 })
 export class VideoComponent {
 

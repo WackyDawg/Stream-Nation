@@ -12,8 +12,9 @@ import { VideoComponent } from '../video/video.component';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, ChannelMetadataComponent, MainComponent, MobileNavComponent, OverlayPlayerComponent,VideoComponent],
   templateUrl: './live-tv.component.html',
-  styleUrl: './live-tv.component.css'
+  styleUrls: ['./live-tv.component.css', '../../../assets/css/themed.css', '../../../assets/css/unthemed.css'], // Add additional CSS files here
 })
+
 export class LiveTvComponent {
 
 }

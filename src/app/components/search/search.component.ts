@@ -22,6 +22,6 @@ import { SearchMainComponent } from '../pages/search-main/search-main.component'
     SearchMainComponent,
   ],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.css',
+  styleUrls: ['./search.component.css', '../../../assets/css/themed.css', '../../../assets/css/unthemed.css'],
 })
 export class SearchComponent {}

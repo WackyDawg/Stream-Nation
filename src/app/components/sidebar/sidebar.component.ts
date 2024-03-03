@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrls: ['./sidebar.component.css', '../../../assets/css/themed.css', '../../../assets/css/unthemed.css']
 })
 export class SidebarComponent {
 

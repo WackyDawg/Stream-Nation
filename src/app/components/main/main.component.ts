@@ -7,7 +7,7 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './main.component.html',
-  styleUrl: './main.component.css'
+  styleUrls: ['./main.component.css' , '../../../assets/css/themed.css', '../../../assets/css/unthemed.css']
 })
 export class MainComponent {
   @ViewChild('slider') slider!: ElementRef; // Note the '!' to indicate that it will be initialized later
