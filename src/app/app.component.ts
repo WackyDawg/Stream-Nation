@@ -9,7 +9,7 @@ import { SearchComponent } from './components/search/search.component';
   standalone: true,
   imports: [RouterOutlet, RouterLink, LiveTvComponent,SearchComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css', '../assets/css/themed.css', '../assets/css/unthemed.css']
 })
 export class AppComponent {
   title = 'my-app';
