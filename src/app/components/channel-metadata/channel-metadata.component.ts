@@ -6,7 +6,7 @@ import { OverlayPlayerComponent } from '../overlay-player/overlay-player.compone
   standalone: true,
   imports: [OverlayPlayerComponent],
   templateUrl: './channel-metadata.component.html',
-  styleUrl: './channel-metadata.component.css'
+  styleUrls: ['./channel-metadata.component.css', '../../../assets/css/themed.css', '../../../assets/css/unthemed.css']
 })
 export class ChannelMetadataComponent {
 

@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';;
   standalone: true,
   imports: [CommonModule, RouterLink, RouterOutlet],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css','../../../assets/css/themed.css', '../../../assets/css/unthemed.css']
 })
 export class HeaderComponent {
   constructor(private router: Router) { }
