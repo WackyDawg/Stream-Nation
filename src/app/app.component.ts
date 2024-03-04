@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { LiveTvComponent } from './components/live-tv/live-tv.component';
-import { SearchComponent } from './components/search/search.component';
+import { LiveTvComponent } from './pages/live-tv/live-tv.component';
+import { SearchComponent } from './pages/search/search.component';
 // import { VideoContainerComponent } from './components/video-container/video-container.component';
 
 @Component({
